@@ -1,0 +1,32 @@
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: black;
+}
+
+.icon {
+  margin: 1px;
+}
+.iconContaner {
+  margin: 3px;
+  color: aliceblue;
+}
+
+.navContent {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.navItem {
+  margin-left: 13px;
+ 
+}
+
+.navOptionContainer {
+  margin: 5px;
+  color: aliceblue;
+}

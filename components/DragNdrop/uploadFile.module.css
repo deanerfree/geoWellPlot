@@ -1,0 +1,20 @@
+.uploadImageHolder {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.dropBox {
+  margin: 10px;
+  padding: 20px;
+  border: 10px dashed rgb(163, 161, 161);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropzone {
+  justify-content: center;
+}
