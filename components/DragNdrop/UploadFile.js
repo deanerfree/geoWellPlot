@@ -1,5 +1,6 @@
 import { useReducer } from "react"
 import { reducer } from "../../reducer"
+import { prepareFile } from "../../helper/helperFunctions"
 import FilePreview from "./FilePreview"
 import styles from "./uploadFile.module.css"
 
@@ -39,13 +40,6 @@ const UploadFile = () => {
 			dispatch({ type: "SET_IN_DROP_ZONE", inDropZone: false })
 		}
 	}
-	const handleDragOver = (e) => {
-		e.preventDefault()
-		e.stopPropagation()
-		e.dataTransfer.dropEffect = "copy"
-		dispatch({ type: "SET_IN_DROP_ZONE", inDropZone: true })
-	}
-
 	const handleFileSelect = (e) => {
 		let files = [...e.target.files]
 
@@ -56,6 +50,12 @@ const UploadFile = () => {
 			files = files.filter((file) => !existingFiles.includes(file.name))
 			dispatch({ type: "ADD_FILE_TO_LIST", files })
 		}
+	}
+	const handleDragOver = (e) => {
+		e.preventDefault()
+		e.stopPropagation()
+		e.dataTransfer.dropEffect = "copy"
+		dispatch({ type: "SET_IN_DROP_ZONE", inDropZone: true })
 	}
 
 	return (
@@ -72,9 +72,9 @@ const UploadFile = () => {
 				<div className={styles.dropBox}>
 					<h3>Drag and drop here</h3>
 					<input
-						data-testid='fileSelect'
 						id='fileSelect'
 						type='file'
+						accept='application/vnd.las'
 						multiple
 						onChange={(e) => handleFileSelect(e)}
 					/>
@@ -82,6 +82,7 @@ const UploadFile = () => {
 				</div>
 			</div>
 			<FilePreview fileData={data} dispatch={dispatch} />
+			<button onClick={() => prepareFile(data)}>Submit Files</button>
 		</>
 	)
 }
